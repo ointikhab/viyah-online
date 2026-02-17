@@ -2,6 +2,8 @@
 import AllServiceSection from './AllServiceSection.vue';
 import HomeSearchBanner from '@/components/banners/HomeSearchBanner.vue';
 import Deals from './Deals.vue';
+import WhyUsSection from './WhyUsSection.vue';
+import ReviewSection from './ReviewSection.vue';
 
 const deals = [
     {
@@ -48,4 +50,6 @@ const deals = [
     <Deals :deals="deals" title="Popular Wedding Deals" />
     <Deals :deals="deals" title="Popular Photography Deals" />
     <Deals :deals="deals" title="Popular Catering Deals" />
+    <WhyUsSection />
+    <ReviewSection />
 </template>
