@@ -1,8 +1,19 @@
 <script setup lang="ts">
+import { onMounted, computed } from 'vue';
+import { useStore } from 'vuex';
 import ListingCard from '@/components/Cards/BaseListingCard.vue';
 import ImageCarousel from '@/components/carousel/ImageCarousel.vue';
 import Filterbar from '@/components/Filter/Filterbar.vue';
 import TotalAdsSection from './TotalAdsSection.vue';
+
+const store = useStore();
+
+onMounted(() => {
+    store.dispatch('venues/loadProducts'); // Calls your loadProducts action
+});
+
+const venues1 = computed(() => store.getters['venues/venues']);
+console.log('wedding venues are', venues1.value);
 
 const venues = [
     {
@@ -106,7 +117,7 @@ const handleSearch = (filters: any) => {
     <div class="max-w-6xl mx-auto py-16 space-y-8">
         <Filterbar @search="handleSearch" />
         <TotalAdsSection :total="120" />
-        <ListingCard v-for="venue in venues" :key="venue.id">
+        <ListingCard v-for="venue in venues1" :key="venue.id">
 
             <!-- IMAGE -->
             <template #image>
