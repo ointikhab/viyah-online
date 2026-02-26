@@ -18,18 +18,17 @@ const prev = () => {
 </script>
 
 <template>
-    <div class="relative h-60 lg:h-full">
+    <div class="relative w-full aspect-[4/3] overflow-hidden">
 
-        <img :src="images[index]" class="w-full h-full object-cover" />
+        <img :src="images[index]" class="absolute inset-0 w-full h-full object-cover" />
 
-        <!-- CONTROLS -->
         <button @click="prev" class="absolute left-2 top-1/2 -translate-y-1/2
-           bg-white/80 rounded-full px-3 py-1">
+      bg-white/80 rounded-full px-3 py-1">
             ←
         </button>
 
         <button @click="next" class="absolute right-2 top-1/2 -translate-y-1/2
-           bg-white/80 rounded-full px-3 py-1">
+      bg-white/80 rounded-full px-3 py-1">
             →
         </button>
 

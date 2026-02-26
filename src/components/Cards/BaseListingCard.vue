@@ -15,15 +15,25 @@
 
                 <!-- TOP ROW -->
                 <div class="flex justify-between items-start">
-                    <slot name="price" />
+                    <slot name="title" />
                     <slot name="badge" />
                 </div>
 
-                <slot name="title" />
-                <slot name="meta" />
+                <slot name="price" />
+                <div class="mt-1">
+                    <slot name="meta" />
+                </div>
                 <slot name="location" />
-
             </div>
+            <div class="mt-2">
+                <slot name="description" />
+            </div>
+
+            <!-- ⭐ RATING -->
+            <div class="mt-2">
+                <slot name="rating" />
+            </div>
+
 
             <!-- ACTIONS -->
             <div class="mt-5 flex flex-wrap gap-3">
