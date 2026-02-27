@@ -2,8 +2,8 @@
     <div class="flex flex-col md:flex-row items-center justify-between bg-white p-4 shadow rounded-md">
         <!-- Left side: Title -->
         <div class="text-lg font-semibold text-gray-800 mb-2 md:mb-0">
-            Avaialble venues in Karachi &bull;
-            <span class="text-gray-500">{{ totalAds.toLocaleString() }} Ads</span>
+            Available {{ props.adType }} in {{ props.city }} &bull;
+            <span class="text-gray-500">{{ props.totalAds.toLocaleString() }} Ads</span>
         </div>
 
         <!-- Right side: Controls -->
@@ -45,7 +45,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const totalAds = ref(60608)
+const props = defineProps<{
+    totalAds: number,
+    adType: string,
+    city: string
+}>()
 const sortOptions = ['Popular', 'Verified', 'Newest to Oldest', 'Oldest to Newest', 'Price Highest to Lowest', 'Price Lowest to Highest']
 const selectedSort = ref('Popular')
 const isDropdownOpen = ref(false)

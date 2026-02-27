@@ -5,5 +5,9 @@ export default {
     },
     hasVenues(state: any){
       return state.venues && state.venues.length > 0
-    }
+    },
+    totalVenues(state: any, getters: any) {
+      return getters.hasVenues ? state.venues.length : 0
+   }
+
 }

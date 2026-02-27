@@ -1,3 +1,5 @@
+import { CITIES, VENUE_TYPES } from "@/constants/FilterBarConstants";
+
 export default {
   async loadProducts(context: any) {
     try {
@@ -9,7 +11,8 @@ export default {
       }
 
       const responseData = await response.json();
-      console.log('Fetched products:', responseData.products);
+      
+
       // Transform the data here before committing
       const venues = responseData.products.map((p: any) => ({
         id: p.id,
@@ -20,7 +23,13 @@ export default {
         images: [p.thumbnail, ...(p.images?.slice(0, 2) || [])], // first 3 images
         rating: Math.floor(Math.random() * 5) + 1, // random rating 1-5
         badges: ['FEATURED', '20% OFF'], // static for now
-        description: p.description
+        description: p.description,
+        venueType: VENUE_TYPES[
+          Math.floor(Math.random() * VENUE_TYPES.length)
+        ],
+        city: CITIES[
+          Math.floor(Math.random() * CITIES.length)
+        ]
       }));
 
       // Commit the transformed data to Vuex store

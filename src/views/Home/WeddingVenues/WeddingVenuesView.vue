@@ -12,101 +12,14 @@ onMounted(() => {
     store.dispatch('venues/loadProducts'); // Calls your loadProducts action
 });
 
-const venues1 = computed(() => store.getters['venues/venues']);
-console.log('wedding venues are', venues1.value);
+const venues = computed(() => {
+    console.log('total venue ads are', totalVenueAds.value, venues.value);
+    return store.getters['venues/venues']
+});
+const totalVenueAds = computed(() => store.getters['venues/totalVenues']);
 
-const venues = [
-    {
-        id: 1,
-        price: 'AED 12,000',
-        type: 'Beach Venue',
-        guests: 300,
-        location: 'Palm Jumeirah',
-        images: [
-            '/images/car-rental.jpeg',
-            '/images/photographer.jpeg',
-            '/images/decoration.jpeg'
-        ],
-        rating: 4.5,
-        badges: ['FEATURED', '20% OFF'],
-        description: 'A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.'
-    },
-    {
-        id: 2,
-        price: 'AED 8,500',
-        type: 'Banquet Hall',
-        guests: 150,
-        location: 'Downtown Dubai',
-        images: [
-            '/images/image.avif',
-            '/images/catering.jpeg'
-        ],
-        rating: 3.5,
-        badges: ['FEATURED', '20% OFF'],
-        description: 'An elegant banquet hall located in the heart of the city, ideal for hosting a grand wedding reception.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.'
 
-    },
-    {
-        id: 2,
-        price: 'AED 8,500',
-        type: 'Banquet Hall',
-        guests: 150,
-        location: 'Downtown Dubai',
-        images: [
-            '/images/image.avif',
-            '/images/catering.jpeg'
-        ],
-        rating: 3.5,
-        badges: ['FEATURED', '20% OFF'],
-        description: 'An elegant banquet hall located in the heart of the city, ideal for hosting a grand wedding reception.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.'
 
-    },
-    {
-        id: 3,
-        price: 'AED 8,500',
-        type: 'Banquet Hall',
-        guests: 150,
-        location: 'Downtown Dubai',
-        images: [
-            '/images/image.avif',
-            '/images/catering.jpeg'
-        ],
-        rating: 3.5,
-        badges: ['FEATURED', '20% OFF'],
-        description: 'An elegant banquet hall located in the heart of the city, ideal for hosting a grand wedding reception.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.'
-
-    },
-    {
-        id: 4,
-        price: 'AED 8,500',
-        type: 'Banquet Hall',
-        guests: 150,
-        location: 'Downtown Dubai',
-        images: [
-            '/images/image.avif',
-            '/images/catering.jpeg'
-        ],
-        rating: 3.5,
-        badges: ['FEATURED', '20% OFF'],
-        description: 'An elegant banquet hall located in the heart of the city, ideal for hosting a grand wedding reception.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.'
-
-    },
-    {
-        id: 5,
-        price: 'AED 8,500',
-        type: 'Banquet Hall',
-        guests: 150,
-        location: 'Downtown Dubai',
-        images: [
-            '/images/image.avif',
-            '/images/catering.jpeg'
-        ],
-        rating: 3.5,
-        badges: ['FEATURED', '20% OFF'],
-        description: 'An elegant banquet hall located in the heart of the city, ideal for hosting a grand wedding reception.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.A beautiful beach venue perfect for a romantic wedding ceremony with stunning views of the sea.'
-
-    }
-]
 const handleSearch = (filters: any) => {
     console.log("Selected filters:", filters);
 };
@@ -116,8 +29,8 @@ const handleSearch = (filters: any) => {
 
     <div class="max-w-6xl mx-auto py-16 space-y-8">
         <Filterbar @search="handleSearch" />
-        <TotalAdsSection :total="120" />
-        <ListingCard v-for="venue in venues1" :key="venue.id">
+        <TotalAdsSection city="Karachi" ad-type="Venues" :total-ads="totalVenueAds" />
+        <ListingCard v-for="venue in venues" :key="venue.id">
 
             <!-- IMAGE -->
             <template #image>
@@ -127,7 +40,7 @@ const handleSearch = (filters: any) => {
             <!-- PRICE -->
             <template #title>
                 <h2 class="text-xl font-bold">
-                    {{ venue.type }}
+                    {{ venue.type }} ({{ venue.venueType }})
                 </h2>
             </template>
 
@@ -159,7 +72,7 @@ const handleSearch = (filters: any) => {
             <!-- LOCATION -->
             <template #location>
                 <p class="text-gray-500 text-sm mt-2">
-                    📍 {{ venue.location }}
+                    📍 {{ venue.city }}
                 </p>
             </template>
 

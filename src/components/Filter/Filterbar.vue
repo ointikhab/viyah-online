@@ -4,21 +4,21 @@
 
             <!-- Purpose Dropdown -->
             <div class="relative">
-                <label class="block text-xs text-gray-500 mb-1">Purpose</label>
-                <button @click="toggleDropdown('purpose')"
+                <label class="block text-xs text-gray-500 mb-1">Venue Type</label>
+                <button @click="toggleDropdown('venueType')"
                     class="w-full text-left px-3 py-2 border border-gray-300 rounded-md bg-white flex justify-between items-center">
-                    <span>{{ selectedPurpose }}</span>
+                    <span>{{ selectedVenueType }}</span>
                     <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
 
                 <!-- Purpose Dropdown Menu -->
-                <div v-if="openDropdown === 'purpose'"
+                <div v-if="openDropdown === 'venueType'"
                     class="absolute left-0 mt-1 w-full bg-white border border-gray-200 rounded-md shadow-lg z-20 max-h-60 overflow-y-auto">
-                    <div v-for="option in purposeOptions" :key="option" @click="selectOption('purpose', option)"
+                    <div v-for="option in venueTypeOption" :key="option" @click="selectOption('venueType', option)"
                         class="px-4 py-2 hover:bg-gray-100 cursor-pointer border-b border-gray-100 last:border-b-0"
-                        :class="{ 'bg-gray-50 font-medium': selectedPurpose === option }">
+                        :class="{ 'bg-gray-50 font-medium': selectedVenueType === option }">
                         {{ option }}
                     </div>
                 </div>
@@ -34,86 +34,30 @@
             <!-- Property Type Dropdown -->
             <div class="relative">
                 <label class="block text-xs text-gray-500 mb-1">Property Type</label>
-                <button @click="toggleDropdown('propertyType')"
+                <button @click="toggleDropdown('city')"
                     class="w-full text-left px-3 py-2 border border-gray-300 rounded-md bg-white flex justify-between items-center">
-                    <span>{{ selectedPropertyType }}</span>
+                    <span>{{ selectedCity }}</span>
                     <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
 
                 <!-- Property Type Dropdown Menu -->
-                <div v-if="openDropdown === 'propertyType'"
+                <div v-if="openDropdown === 'city'"
                     class="absolute left-0 mt-1 w-full bg-white border border-gray-200 rounded-md shadow-lg z-20 max-h-60 overflow-y-auto">
-                    <div v-for="option in propertyTypeOptions" :key="option"
-                        @click="selectOption('propertyType', option)"
+                    <div v-for="option in citiesOption" :key="option" @click="selectOption('city', option)"
                         class="px-4 py-2 hover:bg-gray-100 cursor-pointer border-b border-gray-100 last:border-b-0"
-                        :class="{ 'bg-gray-50 font-medium': selectedPropertyType === option }">
+                        :class="{ 'bg-gray-50 font-medium': selectedCity === option }">
                         {{ option }}
                     </div>
                 </div>
             </div>
 
             <!-- Price Range Dropdown -->
-            <div class="relative">
-                <label class="block text-xs text-gray-500 mb-1">Price Range</label>
-                <button @click="toggleDropdown('priceRange')"
-                    class="w-full text-left px-3 py-2 border border-gray-300 rounded-md bg-white flex justify-between items-center">
-                    <span>{{ selectedPriceRange }}</span>
-                    <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </button>
+            <RangeFilter label="Price Range" :min="0" :max="100000" @apply="handlePriceRange" />
 
-                <!-- Price Range Dropdown Menu (Custom with min/max inputs) -->
-                <div v-if="openDropdown === 'priceRange'"
-                    class="absolute left-0 mt-1 w-64 bg-white border border-gray-200 rounded-md shadow-lg z-20 p-4">
-                    <div class="space-y-3">
-                        <div>
-                            <label class="block text-xs text-gray-500 mb-1">Min Price (AED)</label>
-                            <input type="number" v-model="minPrice" placeholder="No min"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-xs text-gray-500 mb-1">Max Price (AED)</label>
-                            <input type="number" v-model="maxPrice" placeholder="No max"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm">
-                        </div>
-                        <div class="flex gap-2 pt-2">
-                            <button @click="applyPriceRange"
-                                class="flex-1 bg-blue-600 text-white px-3 py-2 rounded-md text-sm hover:bg-blue-700">
-                                Apply
-                            </button>
-                            <button @click="clearPriceRange"
-                                class="flex-1 border border-gray-300 px-3 py-2 rounded-md text-sm hover:bg-gray-50">
-                                Clear
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Beds Dropdown -->
-            <div class="relative">
-                <label class="block text-xs text-gray-500 mb-1">Beds</label>
-                <button @click="toggleDropdown('beds')"
-                    class="w-full text-left px-3 py-2 border border-gray-300 rounded-md bg-white flex justify-between items-center">
-                    <span>{{ selectedBeds }}</span>
-                    <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </button>
-
-                <!-- Beds Dropdown Menu -->
-                <div v-if="openDropdown === 'beds'"
-                    class="absolute left-0 mt-1 w-full bg-white border border-gray-200 rounded-md shadow-lg z-20">
-                    <div v-for="option in bedsOptions" :key="option" @click="selectOption('beds', option)"
-                        class="px-4 py-2 hover:bg-gray-100 cursor-pointer border-b border-gray-100 last:border-b-0"
-                        :class="{ 'bg-gray-50 font-medium': selectedBeds === option }">
-                        {{ option }}
-                    </div>
-                </div>
-            </div>
+            <!-- Price Range Dropdown -->
+            <RangeFilter label="Price 2 Range" :min="0" :max="100000" @apply="handlePriceRange" />
 
             <!-- Filters Button -->
             <div class="relative">
@@ -166,21 +110,23 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { CITIES, VENUE_TYPES } from '@/constants/FilterBarConstants'
 import { ref } from 'vue'
+import RangeFilter from './RangeFilter.vue'
 
 // Dropdown state
 const openDropdown = ref(null)
 
 // Options
-const purposeOptions = ['Rent', 'Buy', 'Commercial']
-const propertyTypeOptions = ['All in Residential', 'Apartment', 'Villa', 'Townhouse', 'Penthouse', 'Studio']
+const venueTypeOption = VENUE_TYPES
+const citiesOption = CITIES
 const bedsOptions = ['Any', '1+', '2+', '3+', '4+', '5+']
 
 // Selected values
-const selectedPurpose = ref('Rent')
-const selectedPropertyType = ref('All in Residential')
+const selectedCity = ref('All')
 const selectedBeds = ref('Any')
+const selectedVenueType = ref('All') // Default to first venue type
 const selectedPriceRange = ref('Any')
 
 // Location
@@ -189,6 +135,10 @@ const location = ref('')
 // Price range
 const minPrice = ref('')
 const maxPrice = ref('')
+
+// Price range
+const minGuests = ref('')
+const maxGuests = ref('')
 
 // Additional filters
 const selectedBaths = ref(null)
@@ -200,10 +150,14 @@ const toggleDropdown = (dropdown) => {
     openDropdown.value = openDropdown.value === dropdown ? null : dropdown
 }
 
+const handlePriceRange = (range: { min: number | null; max: number | null }) => {
+    console.log('Selected price range:', range)
+}
+
 // Select option
 const selectOption = (type, value) => {
-    if (type === 'purpose') selectedPurpose.value = value
-    if (type === 'propertyType') selectedPropertyType.value = value
+    if (type === 'venueType') selectedVenueType.value = value
+    if (type === 'city') selectedCity.value = value
     if (type === 'beds') selectedBeds.value = value
     openDropdown.value = null
 }
@@ -233,9 +187,9 @@ const clearPriceRange = () => {
 const applyFilters = () => {
     // Handle filter application logic here
     console.log('Filters applied:', {
-        purpose: selectedPurpose.value,
+        venueType: selectedVenueType.value,
         location: location.value,
-        propertyType: selectedPropertyType.value,
+        city: selectedCity.value,
         priceRange: { min: minPrice.value, max: maxPrice.value },
         beds: selectedBeds.value,
         baths: selectedBaths.value,
