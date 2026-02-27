@@ -116,7 +116,7 @@ const handleSearch = (filters: any) => {
 
     <div class="max-w-6xl mx-auto py-16 space-y-8">
         <Filterbar @search="handleSearch" />
-        <TotalAdsSection :total="120" />
+        <TotalAdsSection :total="130" />
         <ListingCard v-for="venue in venues1" :key="venue.id">
 
             <!-- IMAGE -->
