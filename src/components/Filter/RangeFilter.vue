@@ -55,8 +55,8 @@ const emit = defineEmits<{
 }>()
 
 const isOpen = ref(false)
-const localMin = ref<number | null>(null)
-const localMax = ref<number | null>(null)
+const localMin = ref<number | null>(0)
+const localMax = ref<number | null>(1000000)
 
 const toggleDropdown = () => {
     isOpen.value = !isOpen.value
@@ -71,9 +71,9 @@ const apply = () => {
 }
 
 const clear = () => {
-    localMin.value = null
-    localMax.value = null
-    emit('apply', { min: null, max: null })
+    localMin.value = 0
+    localMax.value = 1000000
+    emit('apply', { min: 0, max: 1000000 })
     isOpen.value = false
 }
 
