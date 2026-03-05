@@ -32,3 +32,7 @@ export const CITIES = [
     'Chitral', 
     'Gilgit', 
     'Skardu']
+
+export const CANCELLATION_POLICIES = ['Refundable', 'Non Refundable', 'Partial']
+
+export const  STAFF_OPTIONS = ['Male', 'Female', 'Transgender']

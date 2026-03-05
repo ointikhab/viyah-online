@@ -123,6 +123,7 @@ const handlePriceRange = (range: { min: number | null; max: number | null }) => 
 
 const applyAllFilters = () => {
     console.log('Applying Filters:', toRef(filters).value)
+    console.log(`venueType: ${filters.venueType}, location: ${filters.location}, city: ${filters.city}, priceRange: ${JSON.stringify(filters.priceRange)}, staff: ${filters.staff}, cancellation: ${filters.cancellation}, parking: ${filters.parking}, wheelchair: ${filters.wheelchair}`)
     // Here you would typically emit an event or call a method to fetch data based on the filters
 }
 </script>

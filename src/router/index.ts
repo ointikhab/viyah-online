@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/Home/Home.vue'
-import WeddingVenuesView from '@/views/Home/WeddingVenues/WeddingVenuesView.vue'
+import WeddingVenuesView from '@/views/WeddingVenues/WeddingVenuesView.vue'
+import VenueDetails from '@/views/VenueDetails/VenueDetails.vue'
+import VenueRegistration from '@/views/VenueRegistration/VenueRegistration.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +16,16 @@ const router = createRouter({
       path: '/wedding-venue',
       name: 'wedding-venue',
       component: WeddingVenuesView,
+    },
+    {
+      path: '/wedding-venue/:id', 
+      props: true,
+      component: VenueDetails,
+    },
+    {
+      path: '/venue-registration',
+      name: 'venue-registration',
+      component: VenueRegistration,
     },
     // {
     //   path: '/about',

@@ -9,6 +9,7 @@ export default {
     state(){
         return {
             venues: [],
+            venueDetails: {}
         }
     },
     actions, 

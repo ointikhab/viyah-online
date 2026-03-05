@@ -54,6 +54,8 @@
 </template>
 
 <script setup lang="ts">
+import { CANCELLATION_POLICIES, STAFF_OPTIONS } from '@/constants/FilterBarConstants'
+
 const model = defineModel<{
     venueType: string
     location: string
@@ -65,6 +67,6 @@ const model = defineModel<{
     wheelchair: boolean
 }>()
 
-const staffOptions = ['Male', 'Female', 'Transgender']
-const cancellationOptions = ['Refundable', 'Non Refundable', 'Partial']
+const staffOptions = STAFF_OPTIONS
+const cancellationOptions = CANCELLATION_POLICIES
 </script>

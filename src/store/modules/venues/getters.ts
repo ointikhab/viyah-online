@@ -8,6 +8,9 @@ export default {
     },
     totalVenues(state: any, getters: any) {
       return getters.hasVenues ? state.venues.length : 0
-   }
+   },
+   venueDetails(state: any){
+        return state.venueDetails
+    },
 
 }

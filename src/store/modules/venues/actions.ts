@@ -1,4 +1,4 @@
-import { CITIES, VENUE_TYPES } from "@/constants/FilterBarConstants";
+import { CITIES, STAFF_OPTIONS, VENUE_TYPES } from "@/constants/FilterBarConstants";
 
 export default {
   async loadProducts(context: any) {
@@ -29,7 +29,15 @@ export default {
         ],
         city: CITIES[
           Math.floor(Math.random() * CITIES.length)
-        ]
+        ],
+        parking: Math.random() < 0.5,      // randomly true or false
+        wheelchair: Math.random() < 0.5,   // randomly true or false
+        staff: Math.random() < 0.3 // 30% chance to be "All"
+            ? 'All'
+            : STAFF_OPTIONS
+                .filter(() => Math.random() < 0.5) // random subset
+                .join(', ') || STAFF_OPTIONS[Math.floor(Math.random() * STAFF_OPTIONS.length)] // fallback if empty
+
       }));
 
       // Commit the transformed data to Vuex store
@@ -37,5 +45,41 @@ export default {
     } catch (error) {
       console.error('Fetch error:', error);
     }
+  },
+
+   async loadVenueDetails(context, payload: any) {
+    const { venueId } = payload;
+    const response = await fetch(
+      `https://dummyjson.com/products/${venueId}`
+    )
+
+    if (!response.ok) {
+      console.log('error while fetching product details')
+      return
+    }
+
+    const responseData = await response.json()
+
+    console.log('venue details:', responseData)
+
+    const transformedDetails = {
+      ...responseData,
+      venueType: VENUE_TYPES[
+          Math.floor(Math.random() * VENUE_TYPES.length)
+        ],
+        city: CITIES[
+          Math.floor(Math.random() * CITIES.length)
+        ],
+        parking: Math.random() < 0.5,      // randomly true or false
+        wheelchair: Math.random() < 0.5,   // randomly true or false
+        staff: Math.random() < 0.3 // 30% chance to be "All"
+            ? 'All'
+            : STAFF_OPTIONS
+                .filter(() => Math.random() < 0.5) // random subset
+                .join(', ') || STAFF_OPTIONS[Math.floor(Math.random() * STAFF_OPTIONS.length)] // fallback if empty
+
+    }
+
+    context.commit('setVenueDetails', transformedDetails)
   },
 };
