@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "module": "NodeNext",             // Required for ESM support
+    "moduleResolution": "NodeNext",   // Required for ESM support
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "types": ["jest", "node"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": [
+  "src/**/*.ts",
+  "src/**/*.vue",
+  "test/**/*.ts",
+  "src/shims-vue.d.ts"
+] 
+}
