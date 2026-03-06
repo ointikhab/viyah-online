@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@heroicons/vue": "^2.2.0",
+    "@module-federation/utilities": "^3.1.85",
     "@tailwindcss/vite": "^4.1.18",
     "leaflet": "^1.9.4",
     "vue": "^3.5.27",
@@ -43,11 +44,13 @@
     "@vue/vue3-jest": "^29.2.6",
     "autoprefixer": "^10.4.24",
     "babel-jest": "^29.7.0",
+    "css-loader": "^7.1.4",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-oxlint": "~1.42.0",
     "eslint-plugin-playwright": "^2.5.1",
     "eslint-plugin-vue": "~10.7.0",
+    "html-webpack-plugin": "^5.6.6",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jiti": "^2.6.1",
@@ -56,6 +59,7 @@
     "oxlint": "~1.42.0",
     "postcss": "^8.5.6",
     "prettier": "3.8.1",
+    "style-loader": "^4.0.0",
     "tailwindcss": "^4.1.18",
     "ts-jest": "^29.4.6",
     "ts-node": "^10.9.2",
@@ -63,7 +67,11 @@
     "vite": "^7.3.1",
     "vite-plugin-vue-devtools": "^8.0.5",
     "vitest": "^4.0.18",
-    "vue-tsc": "^3.2.4"
+    "vue-loader": "^17.3.1",
+    "vue-tsc": "^3.2.4",
+    "webpack": "^5.105.4",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.3"
   },
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
