@@ -6,7 +6,7 @@ module.exports = {
   mode: "development",
 
   devServer: {
-    port: 3001,
+    port: 3000,
   },
 
   entry: "./src/main.js",
@@ -36,12 +36,10 @@ module.exports = {
     new VueLoaderPlugin(),
 
     new ModuleFederationPlugin({
-      name: "venueApp",
+      name: "container",
 
-      filename: "remoteEntry.js",
-
-      exposes: {
-        "./VenueList": "./src/components/VenueList.vue",
+      remotes: {
+        venueApp: "venueApp@http://localhost:3001/remoteEntry.js",
       },
 
       shared: {

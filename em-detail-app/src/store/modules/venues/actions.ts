@@ -47,7 +47,7 @@ export default {
     }
   },
 
-   async loadVenueDetails(context, payload: any) {
+   async loadVenueDetails(context: any, payload: any) {
     const { venueId } = payload;
     const response = await fetch(
       `https://dummyjson.com/products/${venueId}`
