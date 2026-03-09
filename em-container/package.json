@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "start": "webpack serve --config webpack.config.cjs --mode development",
+    "build": "webpack --config webpack.config.cjs --mode production",
     "preview": "vite preview",
     "test:unit": "vitest",
     "test:e2e": "playwright test",
