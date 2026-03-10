@@ -9,7 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist-webpack'),
     filename: '[name].js',
-    publicPath: '/',
+    publicPath: 'http://localhost:3001/'
   },
   resolve: {
     extensions: ['.ts', '.js', '.vue'],
@@ -55,10 +55,11 @@ module.exports = {
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({ template: './index.html' }),
     new ModuleFederationPlugin({
-      name: 'app1',
+      name: 'detailApp',
       filename: 'remoteEntry.js',
       exposes: {
-        './detailApp': './src/views/VenueDetails/VenueDetails.vue',
+        './VenueDetails': './src/views/VenueDetails/VenueDetails.vue',
+        './remoteStyles': './src/style.css', 
       },
       shared: {
         vue: {
@@ -66,6 +67,7 @@ module.exports = {
           eager: true,           // Load immediately
           requiredVersion: '^3.5.28',
         },
+        leaflet: { singleton: true, eager: true, requiredVersion: '^1.9.4' },
       },
     }),
   ],

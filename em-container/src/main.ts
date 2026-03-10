@@ -1,5 +1,7 @@
 import './style.css'
 import 'leaflet/dist/leaflet.css';
+// Remote component CSS
+import('detailApp/remoteStyles');
 
 import { createApp } from 'vue'
 import App from './App.vue'

@@ -9,7 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist-webpack'),
     filename: '[name].js',
-    publicPath: '/',
+    publicPath: 'http://localhost:3000/'
   },
   resolve: {
     extensions: ['.ts', '.js', '.vue'],
@@ -55,15 +55,14 @@ module.exports = {
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({ template: './index.html' }),
     new ModuleFederationPlugin({
-      name: 'app1',
-      filename: 'remoteEntry.js',
+      name: 'container',
       remotes: {
-        './detailApp': 'detailApp@http://localhost:3001/remoteEntry.js',
+        detailApp: 'detailApp@http://localhost:3001/remoteEntry.js'
       },
       shared: {
         vue: {
-          singleton: true,       // Only one Vue instance across MFEs
-          eager: true,           // Load immediately
+          singleton: true,
+          eager: true,
           requiredVersion: '^3.5.28',
         },
       },

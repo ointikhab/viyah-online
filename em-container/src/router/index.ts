@@ -1,41 +1,23 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/views/Home/Home.vue'
-import WeddingVenuesView from '@/views/WeddingVenues/WeddingVenuesView.vue'
-import VenueDetails from '@/views/VenueDetails/VenueDetails.vue'
-import VenueRegistration from '@/views/VenueRegistration/VenueRegistration.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '@/views/Home/Home.vue';
+import WeddingVenuesView from '@/views/WeddingVenues/WeddingVenuesView.vue';
+import VenueRegistration from '@/views/VenueRegistration/VenueRegistration.vue';
+import VenueDetails from '@/views/VenueDetails/VenueDetails.vue';
+
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory('/'),
   routes: [
+    { path: '/', name: 'home', component: HomeView },
+    { path: '/wedding-venue', name: 'wedding-venue', component: WeddingVenuesView },
     {
-      path: '/',
-      name: 'home',
-      component: HomeView,
-    },
-    {
-      path: '/wedding-venue',
-      name: 'wedding-venue',
-      component: WeddingVenuesView,
-    },
-    {
-      path: '/wedding-venue/:id', 
-      props: true,
+      path: '/wedding-venue/:id',
+      name: 'venue-details',
       component: VenueDetails,
+      props: true, 
     },
-    {
-      path: '/venue-registration',
-      name: 'venue-registration',
-      component: VenueRegistration,
-    },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue'),
-    // },
+    { path: '/venue-registration', name: 'venue-registration', component: VenueRegistration },
   ],
-})
+});
 
-export default router
+export default router;

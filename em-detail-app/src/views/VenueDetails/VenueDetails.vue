@@ -47,8 +47,9 @@
                 <!-- Buttons -->
                 <div class="flex gap-4 mt-4">
 
-                    <button class="border border-red-500 text-red-500 px-6 py-2 rounded-full">
-                        Send Message
+                    <button @click="toggleWishlist"
+                        class="border border - red - 500 text - red - 500 px-6 py-2 rounded-full">
+                        Add to Wishlist
                     </button>
 
                     <button class="bg-red-500 text-white px-6 py-2 rounded-full">
@@ -86,19 +87,40 @@ import BasicDetails from "./BasicDetails.vue";
 import VenuePricing from "./VenuePricing.vue";
 import VenueLocation from "./VenueLocation.vue";
 import VenueReviews from "./VenueReviews.vue";
+import { useRoute } from 'vue-router';
 
 
 const tabs = ["Details", "Pricing", "Location", "Reviews"]
 const activeTab = ref("Details")
-
+const route = useRoute();
 const store = useStore();
 
+
+// --- Props from container wrapper ---
+const props = defineProps({
+    id: { type: [String, Number], required: false }, // from container
+});
+
+// Get venueId from the URL
+// Decide venueId: use prop first (from container), fallback to route (standalone remote)
+const venueId = computed(() => props.id || route.params.id);
+
+// Load venue details when component mounts
 onMounted(() => {
-    store.dispatch('venues/loadVenueDetails', { venueId: 1 }); // Calls your loadVenueDetails action
+    if (venueId.value) {
+        store.dispatch('venues/loadVenueDetails', { venueId: Number(venueId.value) });
+    }
 });
 
 const venueDetails = computed(() => {
     console.log('venue details:', store.getters['venues/venueDetails']);
     return store.getters['venues/venueDetails']
 });
+
+
+
+const toggleWishlist = () => {
+    console.log('Toggling wishlist for venue ID:', venueId, venueDetails.value.title)
+    window.dispatchEvent(new CustomEvent('wishlistToggle', { detail: { id: venueId.value, name: venueDetails.value.name } }));
+};
 </script>
