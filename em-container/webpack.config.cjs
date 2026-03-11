@@ -57,7 +57,8 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'container',
       remotes: {
-        detailApp: 'detailApp@http://localhost:3001/remoteEntry.js'
+        detailApp: 'detailApp@http://localhost:3001/remoteEntry.js',
+        formApp: 'formApp@http://localhost:3002/remoteEntry.js'
       },
       shared: {
         vue: {
